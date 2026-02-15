@@ -77,12 +77,9 @@ Realizar una automatización que coloque estas mantas en la matriz de la inyecto
 ---
 
 ## Brief
-
-**One-liner (1 frase):**  
-[Qué hace el proyecto + para quién + beneficio principal.]
 Pick and place de una tela porosa para una empresa de filtros automatizando un puesto de trabajo.
 
-**Elevator pitch (30 segundos):**  
+**Elevator pitch:**  
 Este proyecto **Cobot dispoensador de mantas** (tipo **[PPS]**, **[2026] [C1]**) independiza **la inyección de mantas de la intervensión constante de un operario** mediante **la implementación de un brazo antropomorfico colaborativo "cobot"**.
 Está orientado a **[una empresa de filtros]** y permite **[independizar al colaborador del proceso, permitiendo que el mismo realize varias tareas y no una sola]**.
 Se implementa con **[brazo robótico y un dispositivo dispensador de mantas]** y se valida mediante **[producción automática]**.
@@ -137,7 +134,21 @@ Se implementa con **[brazo robótico y un dispositivo dispensador de mantas]** y
 ---
 
 ## Descripción técnica
-[Explicación técnica del funcionamiento, decisiones de diseño y consideraciones.]
+
+   - Separación de filtros:
+        Al inicio se trato de implementar que el agarre del filtro y la separación uno a uno se realice de forma conjunta por el mismo gripper, esta idea viene de la mano de proveedores de automatización local(Argentina) e internacional(China) los cuales rápidamente sugirieron un agarre por ventosas o por clavado de agujas, ambos sistemas no resultaron satisfactorios en la práctica, ya que tomaban más de un filtro, lo que puede casuar una rotura de la matriz por una inyección descontrolada del material, por lo que fueron descartados rapidamente.
+     En paralelo investigué una tecnología poco explotada industrialmente como lo son los SoftGrippers, existiendo una empresa que se dedica a fabricar estos agarres para el mundo de la inyección de plástico y telas [https://www.softroboticgripper.com/], estos por lo visto en videos parecían la solución perfecta, por lo que se decidío comprar un kit base de la marca para realizar pruebas, sin embargo estas pruebas no resultaron satisfactorias y siendo este un recurso solo disponible en china con tiempos de entrega grandes y con la fecha de cierre de proyecto acercandose se decidío descartarlos.
+     No obstante a día de hoy sigo pensando que debe existir una configuración que satisfasga la necesidad planteada, siendo superior al sistema implementado, solo que no pudimos conseguirla.
+     También se descartó una opción muy interesante que imita a las patas de un Gecko, [https://schunk.com/de/en/gripping-systems/adhesive-grippers/adheso/c/PGR_5510?csot0=downloads&cspt0=tctc&cspc0=seriesTabComponent&cspt1=tcsc&cspc1=categoryVariants&cspfs1=PGR_5510], siendo esta descartada por su elevado costo.
+     Con todos los resultados puestos sobre la mesa se decidió avanzar con un dispositivo que separe uno a uno los filtros, el cuál se basa en el principio del funcionamiento de una mandolina (utensillo culinario), este posee una cuchilla con un escalón del espesor de un filtro, por lo que con un movimiento se puede "cortar", en realidad es separar, por cada filtro, recordar que este material es poroso y una de sus superficies es similar a la de un velcro (posee pelos) por lo que se necesita de ese filo para separarlos.
+   - Orientación de filtros:
+        Desde un comienzo se probaron sistemas de rodillos, actuadores, velcros, cámaras de visión artificail, sensores de colores y sensores opticos para tratar de diferenciar el lado del filtro, ya que esto es importante porque si se inyecta del lado equivocado el filtro no sirve, ya que puede taparse con el uso doméstico con los años, generando un inconveniente que surge con el tiempo, por lo que no es posible validarlo en una etapa posterior de los procesos de la fábrica. Dadas estas condiciones se decide continuar con el ordenamiento de los mismos mediante un operario, como se lo hace actualmente.
+   - Agarre de filtros:
+        Una vez separados los filtros uno a uno parecería resolverse el problema del agarre, ya que está comprobado que las ventosas por vacío pueden agarrar estos filtros; sin embargo el que sea posible no quiere decir que sea fácil, ya que si tomamos el principio de funcionamiento de la ventosa se intuye que mientras mayor sea la superficie de agarre, sea mayor el caudal de vacío y sea mayor la presión de vacío mejor se va a agarrar la pieza.
+        Bueno, no esta vez, ya que es un material poroso; por lo que a mayor área, mayor lugar por donde se pierde vacío, por lo que resulta en que no se agarre a la ventosa, a mayor presión se abren más los poros de la tela, resultando en lo mismo.
+        La solución fue, y contra toda lógica, reducir lo máximo el punto de aplicación del vacío, aplicando el mayor caudal posible en ese punto para la presión de entrada, lo que resultó en una "ventosa" de 4mm de diam de superficie de vacío efectivo.
+   - Operación del sistema:
+        Se analizaron distintos métodos para realizar el pick and place, como lo fueron los robots cartesianos (comunes en inyección de plástico), desplazamientos lineales neumaticos y los brazos antropomórficos, resultando este último el seleccionado ya que no implica modificar estructuralmente a la inyectora, permitiendo retirarlo con un apilador hidráulico para utilizar a la inyectora de forma manual.
 
 ---
 
