@@ -113,11 +113,10 @@ Se implementa con **[brazo robótico y un dispositivo dispensador de mantas]** y
 - **Qué funciona hoy:**
      - Dispenzador de filtros.
      - Colocado de filtros en matrices.
-     - Retiro de piezas inyectadas (7 de 8 piezas).
-- **Próximos pasos:**
-     - Asegurar el retiro exitoso de las 8 piezas inyectadas. (fin de automatización planeada)
+     - Retiro de piezas inyectadas.
+
 - **Oportunidad de mejora:** 
-     - Reducción de tiempo de ciclo.
+     - Reducción de tiempo de ciclo. (Hoy en 35seg -> Objetivo 30 seg)
      - Reducción de tiempo de llenado de dispensador de filtros.
      - Implementar el cobot para más procesos.
      - Mejora general de automatización: Mejorar cableado, mejorar dispensador (hoy prototipo de aluminio, a futuro de Acero Inox. con guia lineal)
@@ -127,9 +126,10 @@ Se implementa con **[brazo robótico y un dispositivo dispensador de mantas]** y
 ### Demo rápida
 - **Video / GIF:** [https://youtube.com/shorts/cSWNZMFp7aM]
 - **Instrucciones express (2 minutos):**
-  1) [Paso 1]
-  2) [Paso 2]
-  3) [Paso 3]
+  1) Realizar conexión de cables.
+  2) Puesta a punto de posiciones.
+  3) Carga de dispensador.
+  4) Start.
 
 ---
 
@@ -169,16 +169,11 @@ Se implementa con **[brazo robótico y un dispositivo dispensador de mantas]** y
 - Pinzas neumáticas AA-22 de Gimatic
 - Eyectores de vacío de la marcha Schmalz
 - Pistones para el movimiento del dispenzador de filtros
-
+- Señal habiltante para inyectar
 
 ---
 
 ## Instrucciones de uso
-
-### Requisitos previos
-- [Software / IDE]
-- [Drivers / librerías]
-- [Hardware mínimo]
 
 ### Instalación / Puesta en marcha
 1) [Armado de dispensador y estación del robot]
@@ -189,7 +184,7 @@ Se implementa con **[brazo robótico y un dispositivo dispensador de mantas]** y
 
 ### Uso
 - **Modo normal:**
-     Se coloca el Robot colaborativo en el puesto de operación de la inyectora de plástico, se lo asegura a la misma mediante dos tornillos para evitar desfaces y se vinculan mediente la conexión de un cable, con el mismo el robot recibe las señales que le permiten comenzar a moverse dentro de la inyectora.
+     Se coloca el Robot colaborativo en el puesto de operación de la inyectora de plástico, se lo asegura a la misma mediante dos tornillos para evitar desfaces y se vinculan mediente la conexión de un cable, con el mismo      el robot recibe las señales que le permiten comenzar a moverse dentro de la inyectora.
      La inyectora debe colocarse en modo semi-automático ya que el cobot enviará la confirmación de cuando terminó la tarea de pick and place para que la mesa rotativa de la inyectora intercambie matrices.
      Debe reponerse periodicamente (estimado 1 hora) los filtros en su cargador para que el ciclo no se detenga, al igual que retirar cada 4 horas la caja donde caen las piezas inyectadas a granel.
 - **Calibración (si aplica):**
@@ -205,22 +200,29 @@ Se implementa con **[brazo robótico y un dispositivo dispensador de mantas]** y
 ---
 
 ## Tecnologías utilizadas
-- **Robótica / Control:** [Robot colaborativo C5 Aubo]
+- **Robótica / Control:** 
+     - Robot colaborativo C5 Aubo
 - **Electrónica:** [sensores  / drivers / etc.]
      - Vacuostatos electricos regulables
      - Sensores magneticos tipo Reed Switch
      - Relés 24VDC (aislamiento entre sensores(PNP), inyectora(PNP), controlador del robor(NPN))
-- **Programación:** [Online Program en controlador de Cobot]
-
+- **Programación:**
+     - Online Program en controlador de Cobot
 ---
 
 ## Listado de componentes
 
 | Componente | Cantidad | Modelo / Especificación | Función |
 |---|---:|---|---|
-| [Componente 1] | [1] | [Modelo] | [Función] |
-| [Componente 2] | [2] | [Modelo] | [Función] |
-| [Componente 3] | [1] | [Modelo] | [Función] |
+| [Pinza neumática]  | [4] | [AA22 Gimatic] | [Tomar piezas inyectadas] |
+| [Eyector de aire] | [2] | [SBP 15 SDA S2] | [Generador de vacío para tomar piezas sin inyectar] |
+| [Vacuostato electrónico] | [2] | [0.400.001.139] | [Detectar el correcto agarre de las piezas i¿no inyectadas] |
+| [Interruptor magnético] | [6] | [DSL6] | [Detectar la posición de los pistones/ pinzas] |
+| [Microcilindro] | [1] | [MD8 SSL Ejecución S Ø16 DE Carr:125] | [Accionamiento de la cuichilla dispenzadora] |
+| [Cilindro neumático] | [1] | [CASP Ø20 Carr:125] | [Posicionamiento de la pieza no inyectada] |
+| [Electroválvula neumática] | [5] | [5/2 reacción a resorte] | [Comandar el cambio de estado de los componentes neumáticos] |
+| [Piezas mecanizadas para dispenzador] | [1] | [Ver plano] | [Separar piezas sin inyectar] |
+| [Piezas para mesa de montaje] | [1] | [Ver plano] | [Soportar la automatización] |
 
 ---
 
