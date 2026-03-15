@@ -175,6 +175,14 @@ Se implementa con **[brazo robótico y un dispositivo dispensador de mantas]** y
 
 ## Instrucciones de uso
 
+### Requisitos previos
+- [Software / IDE]
+   - Integrado en el Cobot, no es necesario descargar nada.
+- [Drivers / librerías]
+   - Idem anterior.
+- [Hardware mínimo]
+   - Contando con el cobot ya es posible simular el funcionamineto, luego debe implmentarse el gripper para tomar las piezas inyectadas, por último debe colocarse el dispensador para automatizarlo.
+
 ### Instalación / Puesta en marcha
 1) [Armado de dispensador y estación del robot]
 2) [Instalar sensores y señales]
@@ -260,7 +268,7 @@ Contacto: [estorani23@gmial.com / www.linkedin.com/in/ezequiel-storani-5a57673b1
 ---
 
 ## About (descripción corta del repositorio)
-
+Automatización con robot colaborador para tareas de Pick and Place de materiales porosos.
 Usar este texto (o similar) en el campo **About** de GitHub:
 
 **[PPSF] — [CobotDispensador] — FI-UNLZ — [2026] [1C] — [Storani]**
